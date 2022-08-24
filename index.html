@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>SPK and SSK Calculator</title>
+    <title>Document</title>
 </head>
 <body>
     <h2>PSK and SSK calculater</h2>
@@ -39,8 +39,8 @@
         let gfr = document.getElementById("exampleFormControlTextarea2").value;
         let urine_specific_gravity = document.getElementById("exampleFormControlTextarea3").value;
         let fibrinogen = document.getElementById("exampleFormControlTextarea4").value;
-        let spk = Math.exp(-12.6869865774856-8.10805602622373E-03*age-1.27424100857524E-02*gfr+1.65500708096564E-02*urine_specific_gravity+3.21420941951901E-02*fibrinogen);
-        let ssk = Math.exp(-16.1158612630392+1.13239985037391E-02*age+1.78098422972909E-03*gfr+1.81848930663356E-02*urine_specific_gravity-0.218077204802125*fibrinogen);
+        let spk = Math.exp(-12.6869865774856-8.10805602622373E-03*parseFloat(age)-1.27424100857524E-02*parseFloat(gfr)+1.65500708096564E-02*parseFloat(urine_specific_gravity)+3.21420941951901E-02*parseFloat(fibrinogen));
+        let ssk = Math.exp(-16.1158612630392+1.13239985037391E-02*parseFloat(age)+1.78098422972909E-03*parseFloat(gfr)+1.81848930663356E-02*parseFloat(urine_specific_gravity)-0.218077204802125*parseFloat(fibrinogen));
         let spk_value = "SPK(%): " + spk;
         let ssk_value = "SSK(%): " + ssk;
         if (age > 0 && gfr > 0 && urine_specific_gravity > 0 && spk > 0) {
@@ -54,5 +54,4 @@
     }
 </script>
 </html>
-
 
