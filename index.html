@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>PSK and SSK calculater</h2>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Age</label>
+        <input class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea2" class="form-label">GFR</label>
+        <input class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea3" class="form-label">Urine specific gravity</label>
+        <input class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea4" class="form-label">Fibrinogen</label>
+        <input class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+    </div>
+    <h3 id="spk"></h3>
+    <h3 id="ssk"></h3>
+
+    <button type="submit" class="btn btn-primary" onclick=calc()>Submit</button>
+ 
+</body>
+<script>
+    function calc() {
+        let age = document.getElementById("exampleFormControlTextarea1").value;
+        let gfr = document.getElementById("exampleFormControlTextarea2").value;
+        let urine_specific_gravity = document.getElementById("exampleFormControlTextarea3").value;
+        let fibrinogen = document.getElementById("exampleFormControlTextarea4").value;
+        let spk = Math.exp(-12.6869865774856-8.10805602622373E-03*age-1.27424100857524E-02*gfr+1.65500708096564E-02*urine_specific_gravity+3.21420941951901E-02*fibrinogen);
+        let ssk = Math.exp(-16.1158612630392+1.13239985037391E-02*age+1.78098422972909E-03*gfr+1.81848930663356E-02*urine_specific_gravity-0.218077204802125*fibrinogen);
+        let spk_value = "SPK(%): " + spk;
+        let ssk_value = "SSK(%): " + ssk;
+        if (age > 0 && gfr > 0 && urine_specific_gravity > 0 && spk > 0) {
+            document.getElementById("spk").innerHTML = spk_value;
+            document.getElementById("ssk").innerHTML = ssk_value;
+        }
+        else {
+            document.getElementById("spk").innerHTML = "";
+            document.getElementById("ssk").innerHTML = "";
+        }
+    }
+</script>
+</html>
+
+
