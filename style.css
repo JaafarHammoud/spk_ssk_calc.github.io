@@ -2,6 +2,9 @@ body {
     max-width: 500px;
     margin: auto;
 }
+.rec {
+padding: 2%;
+}
 button {
     width: 100px;
     margin-left: 40%;
